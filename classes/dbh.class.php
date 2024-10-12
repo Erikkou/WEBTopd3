@@ -3,7 +3,7 @@
     private $host = 'localhost';
     private $user = 'root';
     private $pwd = '';
-    private $dbName = 'deeltijd';
+    private $dbName = 'shareboard';
 
     protected function connect() {
       $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;

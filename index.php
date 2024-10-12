@@ -1,5 +1,9 @@
 <?php
+  $title = "index";
+
   include 'includes/class-autoload.inc.php';
+  include_once('includes/header.php');
+  include_once('includes/footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +15,10 @@
 </head>
 <body>
   <?php
-    $usersObj = new UsersView();
-    echo $usersObj->showUser('Bas');
-    $usersObj2 = new UsersContr();
-    $usersObj2->createUser('Iet', 'Sanders', '1999-07-07');
+    //$usersObj = new UsersView();
+    //echo $usersObj->showUser('Bas');
+    //$usersObj2 = new UsersContr();
+    //$usersObj2->createUser('Iet', 'Sanders', '1999-07-07');
   ?>
 </body>
 </html>
