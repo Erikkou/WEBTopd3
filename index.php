@@ -3,21 +3,31 @@
 
   include 'includes/class-autoload.inc.php';
   include_once('includes/header.php');
-?>
 
-<div style="text-align: center;">
-    <h1>Welcome To ShareBoard</h1>
-    <p>Find something cool? Share it with our community. Look at other shares as well</p>
-    <a href="shares.php" class="btn btn-primary">Share Now</a>
+$routes = [
+    'register' => 'userscontr@register',
+    'login'=> 'userscontr@login',
+    //'/share' => 'classes\ShareController.class@share',
+    '' => 'userscontr@index',
+    'index' => 'userscontr@index',
+    'shares' => 'sharescontr@shares',
+    'logout' => 'userscontr@logout',
+    'shares' => 'sharescontr@shares',
+    'sharesomething' => 'sharescontr@sharesomething',
+];
 
-</div>
+$request = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
+
+if(array_key_exists($request, $routes)){
+
+    $route = explode('@', $routes[$request]);
+    $controllerName = $route[0];
+    $methodName = $route[1];
+    $controller = new $controllerName();
+    $controller->$methodName();
 
 
-<?php
-include_once('includes/footer.php');
-    //$usersObj = new UsersView();
-    //echo $usersObj->showUser('Bas');
-    //$usersObj2 = new UsersContr();
-    //$usersObj2->createUser('Iet', 'Sanders', '1999-07-07');
-?>
+} else {
+    echo "404 - Page not found";
+}
 

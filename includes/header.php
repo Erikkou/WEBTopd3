@@ -39,18 +39,24 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" href="/WEBTopd3/index.php">Home</a></li>
-                <li class="nav-item active"><a class="nav-link" href="/WEBTopd3/index.php">Shares</a></li>
+                <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
+                <li class="nav-item active"><a class="nav-link" href="shares">Shares</a></li>
             </ul>
         </div>
         <div class="d-flex">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" href="login.php">Login</a></li>
-                <li class="nav-item active"><a class="nav-link" href="register.php">Register</a></li>
+                <?php session_start(); // Start the session ?>
+                <?php if (isset($_SESSION['username'])): ?>
+                    <li class="nav-item active">
+                        <span class="nav-link">Welcome, <?= htmlspecialchars($_SESSION['username']); ?></span>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                <?php else: ?>
+                <li class="nav-item active"><a class="nav-link" href="login">Login</a></li>
+                <li class="nav-item active"><a class="nav-link" href="register">Register</a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <div class="col-sm-12 center-block">
-            <div class="jumbotron">
-                <div class="container">
